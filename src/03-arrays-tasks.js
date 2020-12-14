@@ -81,14 +81,11 @@ function getArrayOfPositives() {
  *    [ 'cat, 'dog', 'raccoon' ] => [ 'cat', 'dog', 'raccoon' ]
  */
 function getArrayOfStrings(arr) {
-  const result = [];
-  arr.forEach((x) => {
-    if (typeof x === 'string' || x instanceof String) {
-      result.push(x);
-    }
-  });
-
-  return result;
+  function fc(x) {
+    return (x || false) && x.constructor === String;
+  }
+  const abc = arr.filter(fc);
+  return abc;
 }
 
 /**
@@ -216,7 +213,7 @@ function toCsvText(/* arr */) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-  return arr.map((x) => x ** x);
+  return arr.map((x) => x ** 2);
 }
 
 /**
@@ -249,13 +246,7 @@ function getMovingSum() {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  const result = [];
-  arr.forEach((x, i) => {
-    if ((i + 1) % 2 === 0) {
-      result.push(x);
-    }
-  });
-  return result;
+  return arr.filter((x, i) => (i + 1) % 2 === 0);
 }
 
 /**
@@ -357,11 +348,8 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-  let count = 0;
-  arr.forEach((x) => {
-    if (Number.isNaN(x) || x === false || x === 0 || x === undefined || x === '' || x === null) count += 1;
-  });
-  return count;
+  const result = arr.filter((x) => Number.isNaN(x) || x === false || x === 0 || x === undefined || x === '' || x === null);
+  return result.length;
 }
 
 /**
