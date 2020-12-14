@@ -71,8 +71,8 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  const x = (x2 - x1) ** (x2 - x1);
-  const y = (y2 - y1) ** (y2 - y1);
+  const x = (x2 - x1) ** 2;
+  const y = (y2 - y1) ** 2;
   return Math.sqrt(x + y);
 }
 
@@ -166,7 +166,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelipidedDiagonal(a, b, c) {
-  return Math.sqrt((a ** a) + (b ** b) + (c ** c));
+  return Math.sqrt((a ** 2) + (b ** 2) + (c ** 2));
 }
 
 /**
@@ -242,7 +242,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   const convert = Number(value);
-  const isNum = typeof convert === 'number' && !Number.isNan(convert) && convert !== Infinity && convert !== -Infinity;
+  const isNum = typeof convert === 'number' && !Number.isNaN(convert) && convert !== Infinity && convert !== -Infinity;
   if (isNum) {
     return convert;
   }

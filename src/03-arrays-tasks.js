@@ -114,7 +114,7 @@ function getArrayOfStrings(arr) {
 function removeFalsyValues(arr) {
   const result = [];
   arr.forEach((x) => {
-    if (typeof x === 'string' || x instanceof String) {
+    if (typeof x === 'string' || x instanceof String || x === true || x.length !== 0) {
       result.push(x);
     }
   });
